@@ -1,0 +1,12 @@
+<div class="container">
+  <form class="jumbotron">
+      <h3 class="display-4">Add a Link</h3>
+      <div class="form-group">
+        <label for="title">Anno:</label>
+        <input name="title" type="number" #newAnno class="form-control">
+      </div>
+    <button (click)="getDatas(newAnno)" class="btn btn-primary">
+      Submit link
+    </button>
+  </form>
+</div>
