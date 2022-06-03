@@ -4,10 +4,33 @@
       <div class="form-group">
         <label for="title">Anno:</label>
         <input name="title" type="number" #newAnno class="form-control">
-      </div>
+    <!--br per aggiungere un spazio vuouto hr per aggiunger una riga-->  </div>    <br>
     <button (click)="getDatas(newAnno)" class="btn btn-primary">
       Inserisci anno: 
+  
     </button>
-    {{data | json}}
   </form>
+  <!-- mostrare cartine e nome del paese vincitore --><div *ngIf= "data">
+    <h3>paese</h3>
+    <div>cartina</div>
+  </div>
+  <hr>
+  <button onclick="ricercaimmaggine()">bottone stadi</button> 
+  <div *ngIf="">
+    <!-- qui si trova la descrizione--> <p>
+
+    </p>
+<!---->    <img src="" alt="">
+  </div>
+  <hr>
+  <button onclick="ricercaimmaggine2()">bottone capocannonieri</button> 
+  <div *ngIf="">
+    <!-- qui si trova la descrizione--> <p>
+
+    </p>
+<!-- immagine dei capocannonieri--><img src="" alt="">
+  </div>
+</div>
+<div class="container">
+  <app-map [numAnno]="newAnno.value"></app-map>
 </div>
