@@ -53,9 +53,9 @@ export class MapComponent implements AfterViewInit {
       style: (feature) => ({
         weight: 3,
         opacity: 0.5,
-        color: '#008f68',
+        color: '#3685ff',
         fillOpacity: 0.8,
-        fillColor: '#6DB65B'
+        fillColor: '#368eb5'
       })
     });
 

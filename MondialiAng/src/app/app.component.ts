@@ -8,7 +8,8 @@ import { Mondiali } from './models/mondiali.model';
 })
 export class AppComponent {
   title = 'MondialiAng';
- data : any;
+  a : number = 0 ;
+  data : any;
 
   constructor(private stato : StatoMondialiService){
   }
@@ -17,7 +18,7 @@ export class AppComponent {
   
   getDatas(anno: any): boolean {
     let a = anno.value;
-    this.stato.getData(a).subscribe((data: any) =>{
+    this.stato.getCapCannonieri(a).subscribe((data: any) =>{
       console.warn(data)
       this.data = data
     })

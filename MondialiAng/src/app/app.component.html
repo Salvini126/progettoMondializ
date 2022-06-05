@@ -1,37 +1,61 @@
-<div class="container">
-  <form class="jumbotron">
-      <h3 class="display-4">Modiali di calcio</h3>
-      <div class="form-group">
-        <label for="title">Anno:</label>
-        <input name="title" type="number" #newAnno class="form-control">
-    <!--br per aggiungere un spazio vuouto hr per aggiunger una riga-->  </div>    <br>
-    <button (click)="getDatas(newAnno)" class="btn btn-primary">
-      Inserisci anno: 
+
+
+    <div class="container">
+      
+      <div class="row no-gutters">
+        <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
+          <div class="content">
+            <form class="jumbotron">
+              <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+                <h2>Mondiali Di Calcio</h2>
+              </div>
+              <div class="form-group">
+                <label for="title">Anno:</label>
+                <input name="title" type="number" #newAnno class="form-control">
+            <!--br per aggiungere un spazio vuouto hr per aggiunger una riga-->  </div>
+          </form>
+          <!-- mostrare cartine e nome del paese vincitore --><div *ngIf= "data">
+            <h3>paese</h3>
+            <div>cartina</div>
+          </div>
+          <hr>
+          <button onclick="ricercaimmaggine(); getDatas(newAnno)">Vedi Stadi</button> 
+          
+          <div *ngIf="">
+            <!-- qui si trova la descrizione--> <p>
+        
+            </p>
+        <!---->    <img src="" alt="">
+          </div>
+          <hr>
+          <button (click)="getDatas(newAnno)" class="btn btn-primary">
+            vedi Capocannonieri
+          </button>
+          <div *ngIf="data?.length>0">
+            <h3>Nome : {{data[0].nome | json}}</h3>
+            <h3>Numero di goal : {{data[0].goal | json}}</h3>
+        <!-- immagine dei capocannonieri--><img src="" alt="">
+          </div>
+        </div>
+        </div>
+      
+    </div>
   
-    </button>
-  </form>
-  <!-- mostrare cartine e nome del paese vincitore --><div *ngIf= "data">
-    <h3>paese</h3>
-    <div>cartina</div>
-  </div>
-  <hr>
-  <button onclick="ricercaimmaggine()">bottone stadi</button> 
-  <div *ngIf="">
-    <!-- qui si trova la descrizione--> <p>
+  
+<!-- inizio servizzio mappa-->
 
-    </p>
-<!---->    <img src="" alt="">
-  </div>
-  <hr>
-  <button onclick="ricercaimmaggine2()">bottone capocannonieri</button> 
-  <div *ngIf="">
-    <!-- qui si trova la descrizione--> <p>
+<section id="services" class="services">
+  <div class="container">
 
-    </p>
-<!-- immagine dei capocannonieri--><img src="" alt="">
-  </div>
-</div>
-<div class="container">
-  <app-map [numAnno]="newAnno.value"></app-map>
-</div>
-<!-- franco-->
+    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+      <h2>Map</h2>
+    </div>
+
+    <div class="row">
+      <div class="row">
+        <app-map [numAnno]="newAnno.value"></app-map>
+      </div>
+      </div>
+
+    </div>
+</section><!-- End Services Section -->
