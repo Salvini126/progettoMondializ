@@ -1,3 +1,3 @@
 export class AppSettings {
-    public static _API='https://5000-salvini126-progettomond-ar0am7f3t9p.ws-eu46.gitpod.io/';
+    public static _API='https://5000-salvini126-progettomond-f23mg4z67wm.ws-eu46.gitpod.io/';
  }
