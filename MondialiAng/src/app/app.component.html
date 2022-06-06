@@ -15,12 +15,10 @@
             <!--br per aggiungere un spazio vuouto hr per aggiunger una riga-->  </div>
           </form>
           <!-- mostrare cartine e nome del paese vincitore --><div *ngIf= "data">
-            <h3>paese</h3>
-            <div>cartina</div>
           </div>
           <hr>
-          <button onclick="ricercaimmaggine(); getDatas(newAnno)">Vedi Stadi</button> 
-          
+          <button onclick="ricercaimmaggine(); getDatas(newAnno), getStadi(newAnno)">Vedi Stadi</button> 
+            
           <div *ngIf="">
             <!-- qui si trova la descrizione--> <p>
         

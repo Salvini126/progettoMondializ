@@ -11,6 +11,8 @@ export class AppComponent {
   a : number = 0 ;
   data : any;
 
+  a2 : number = 0 ;
+  data2 : any;
   constructor(private stato : StatoMondialiService){
   }
   
@@ -25,5 +27,13 @@ export class AppComponent {
     return false;
   }
 
+  getStadi(anno2: any): boolean {
+    let a2 = anno2.value;
+    this.stato.getStadi(a2).subscribe((data2: any) =>{
+      console.warn(data2)
+      this.data2 = data2
+    })
+    return false;
+  }
   
 }
