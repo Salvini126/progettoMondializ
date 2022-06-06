@@ -4,6 +4,7 @@ import { Mondiali, Mondiali1 } from './models/mondiali.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AppSettings } from './appSetting';
+import { flaskLink } from './flaskLink';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { AppSettings } from './appSetting';
 })
 export class AppComponent {
   title = 'MondialiAng';
+  linkFlask = flaskLink.getUrl();
 
   dataFrame: Observable<Mondiali1[]>| undefined;
   dati:Mondiali1[] = undefined!;
@@ -24,7 +26,7 @@ export class AppComponent {
   
   getDatas(anno: HTMLInputElement){
     let n = anno.value;
-    this.dataFrame1 = this.http.get<Mondiali[]>(AppSettings._API +"capocannonieri/" +n);
+    this.dataFrame1 = this.http.get<Mondiali[]>(this.linkFlask +"/capocannonieri/" +n);
     this.dataFrame1.subscribe(this.fati1)
   }
 
@@ -35,7 +37,7 @@ export class AppComponent {
 
   getStadi(anno2: HTMLInputElement){
     let n = anno2.value;
-    this.dataFrame = this.http.get<Mondiali1[]>(AppSettings._API +"year/" +n);
+    this.dataFrame = this.http.get<Mondiali1[]>(this.linkFlask +"/year/" +n);
     this.dataFrame.subscribe(this.fati)
   }
 
