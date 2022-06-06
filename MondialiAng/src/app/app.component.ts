@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { StatoMondialiService } from './stato-mondiali.service';
-import { Mondiali } from './models/mondiali.model';
+import { Mondiali, Mondiali1 } from './models/mondiali.model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { AppSettings } from './appSetting';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,32 +12,36 @@ import { Mondiali } from './models/mondiali.model';
 })
 export class AppComponent {
   title = 'MondialiAng';
-  a : number = 0 ;
-  data : any;
 
-  a2 : number = 0 ;
-  data2 : any;
-  constructor(private stato : StatoMondialiService){
+  dataFrame: Observable<Mondiali1[]>| undefined;
+  dati:Mondiali1[] = undefined!;
+
+  dataFrame1: Observable<Mondiali[]>| undefined;
+  dati1:Mondiali[] = undefined!;
+
+  constructor(private stato : StatoMondialiService, private http: HttpClient){
   }
   
-  
-  
-  getDatas(anno: any): boolean {
-    let a = anno.value;
-    this.stato.getCapCannonieri(a).subscribe((data: any) =>{
-      console.warn(data)
-      this.data = data
-    })
-    return false;
+  getDatas(anno: HTMLInputElement){
+    let n = anno.value;
+    this.dataFrame1 = this.http.get<Mondiali[]>(AppSettings._API +"capocannonieri/" +n);
+    this.dataFrame1.subscribe(this.fati1)
   }
 
-  getStadi(anno2: any): boolean {
-    let a2 = anno2.value;
-    this.stato.getStadi(a2).subscribe((data2: any) =>{
-      console.warn(data2)
-      this.data2 = data2
-    })
-    return false;
+  fati1 = (dataa: Mondiali[]) => {
+    this.dati1 = dataa;
+    console.log(dataa);
+  }
+
+  getStadi(anno2: HTMLInputElement){
+    let n = anno2.value;
+    this.dataFrame = this.http.get<Mondiali1[]>(AppSettings._API +"year/" +n);
+    this.dataFrame.subscribe(this.fati)
+  }
+
+  fati = (data: Mondiali1[]) => {
+    this.dati = data;
+    console.log(data);
   }
   
 }

@@ -1,7 +1,6 @@
 
 
     <div class="container">
-      
       <div class="row no-gutters">
         <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
           <div class="content">
@@ -11,33 +10,35 @@
               </div>
               <div class="form-group">
                 <label for="title">Anno:</label>
-                <input name="title" type="number" #newAnno class="form-control">
+                <input name="title" type="text" #newAnno class="form-control">
             <!--br per aggiungere un spazio vuouto hr per aggiunger una riga-->  </div>
           </form>
-          <!-- mostrare cartine e nome del paese vincitore --><div *ngIf= "data">
+          <!-- mostrare cartine e nome del paese vincitore <div *ngIf= "data">-->
           </div>
           <hr>
-          <button onclick="ricercaimmaggine(); getDatas(newAnno), getStadi(newAnno)">Vedi Stadi</button> 
-            
-          <div *ngIf="">
-            <!-- qui si trova la descrizione--> <p>
-        
-            </p>
-        <!---->    <img src="" alt="">
-          </div>
+          <button (click)="getStadi(newAnno)"  class="btn btn-outline-primary">Vedi Stadi</button> <br><br>
+            <div *ngFor="let vet of dati" class="list">
+          <!-- qui si trova la descrizione--> 
+              Nome: {{vet.nome}}<br>
+              Country:{{vet.Country}}<br>
+              Capacity: {{vet.Capacity}}<br>
+              Inaugurazione: {{vet.Inaugurazione}}<br>
+              Year: {{vet.Year}}
+          <!--<img src="" alt="">--> 
+            </div>
           <hr>
           <button (click)="getDatas(newAnno)" class="btn btn-primary">
             vedi Capocannonieri
-          </button>
-          <div *ngIf="data?.length>0">
-            <h3>Nome : {{data[0].nome | json}}</h3>
-            <h3>Numero di goal : {{data[0].goal | json}}</h3>
-        <!-- immagine dei capocannonieri--><img src="" alt="">
+          </button><br><br>
+          <div *ngFor="let c of dati1" class="list">
+            Nome: {{c.nome}}<br>
+            Goal: {{c.goal}}
+        <!-- immagine dei capocannonieri <img src="" alt="">-->
           </div>
         </div>
         </div>
-      
     </div>
+
   
   
 <!-- inizio servizzio mappa-->

@@ -41,11 +41,11 @@ class CapocannonieriAPI(Resource):
 
 api.add_resource(CapocannonieriAPI, '/capocannonieri/<int:year>')
 
-@app.route('/country/<string>', methods=['GET'])
-def onedataaa(string):
+@app.route('/year/<int:year>', methods=['GET'])
+def onedataaa(year):
     # GET a specific data by nil
     if request.method == 'GET':
-        data = mongo.db.stadi.find({'Country': string},{"_id" : 0,"Link":0})
+        data = mongo.db.stadi.find({'Year': year},{"_id" : 0,"Link":0})
         resp = json_util.dumps(data)
         return Response(resp, mimetype = 'application/json') 
 

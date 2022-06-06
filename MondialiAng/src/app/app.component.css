@@ -15,3 +15,11 @@ button{
  .container:after {
     clear: both;
  }
+
+.list{
+   font-family:'Courier New', Courier, monospace;
+   font-size: 20px;
+}
+.span{
+   font-weight:900;
+}
