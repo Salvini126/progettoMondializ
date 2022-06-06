@@ -17,6 +17,9 @@ api = Api(app)
 
 
 #-------------------------------------------------------------------------------------------------------------------Prova
+@app.route('/')
+def index():
+    return ""
 
 class MondialiApi(Resource):
     def get(self,numAnno):
@@ -32,12 +35,22 @@ api.add_resource(MondialiApi, '/mondiali/<int:numAnno>', endpoint = 'task')
 
 class CapocannonieriAPI(Resource):
     def get(self,year):
-        result = mond = mongo.db.capocannonieri.find({"Year" : year},{"_id" : 0, "nome" : 1 ,"goal" : 1}) 
+        result = mond = mongo.db.capocannonieri.find({"Year" : year},{"_id" : 0}) 
         resp = json_util.dumps(result)
         return Response(resp, mimetype = 'application/json') 
 
-
 api.add_resource(CapocannonieriAPI, '/capocannonieri/<int:year>')
+
+@app.route('/country/<string>', methods=['GET'])
+def onedataaa(string):
+    # GET a specific data by nil
+    if request.method == 'GET':
+        data = mongo.db.stadi.find({'Country': string},{"_id" : 0,"Link":0})
+        resp = json_util.dumps(data)
+        return Response(resp, mimetype = 'application/json') 
+
+
 
 if __name__ == '__main__':
     app.run()
+    
